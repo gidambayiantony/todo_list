@@ -1,0 +1,225 @@
+/* style.css */
+
+/* Make the container scrollable */
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Adjust the max-width to ensure no overflow */
+    height: 80vh; /* Adjust the height as needed */
+    overflow-y: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Adjust for dark mode */
+body.dark-mode .container {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+body.dark-mode h1 {
+    color: #fff;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap; /* Ensure the form elements wrap within the container */
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="datetime-local"], select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex: 1 1 100px; /* Ensure flexible width */
+    min-width: 0; /* Prevent overflow */
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode input[type="text"], body.dark-mode input[type="datetime-local"], body.dark-mode select {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.add-btn {
+    background-color: #28a745;
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1 1 100px; /* Ensure flexible width */
+    min-width: 0; /* Prevent overflow */
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: #f4f4f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Ensure flexible wrapping of elements */
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode li {
+    background: #333;
+    border-color: #555;
+}
+
+.low {
+    border-left: 5px solid #28a745;
+}
+
+.medium {
+    border-left: 5px solid #ffc107;
+}
+
+.high {
+    border-left: 5px solid #dc3545;
+}
+
+li.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-input, .edit-priority, .edit-date {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1 1 100px; /* Ensure flexible width */
+    min-width: 0; /* Prevent overflow */
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode .edit-input, body.dark-mode .edit-priority, body.dark-mode .edit-date {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.edit-btn, .complete-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1 1 100px; /* Ensure flexible width */
+    min-width: 0; /* Prevent overflow */
+}
+
+.edit-btn {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: #138496;
+}
+
+.complete-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.complete-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.clear-btn {
+    background-color: #ffc107;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: #e0a800;
+}
+
+.toggle-mode {
+    background-color: #6c757d;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ensure full width */
+}
+
+.toggle-mode:hover {
+    background-color: #5a6268;
+}
+
+body.dark-mode .toggle-mode {
+    background-color: #343a40;
+}
+
+body.dark-mode .toggle-mode:hover {
+    background-color: #23272b;
+}
