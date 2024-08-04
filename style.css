@@ -1,225 +1,398 @@
-/* style.css */
-
-/* Make the container scrollable */
-.container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px; /* Adjust the max-width to ensure no overflow */
-    height: 80vh; /* Adjust the height as needed */
-    overflow-y: auto;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Adjust for dark mode */
-body.dark-mode .container {
-    background: #1e1e1e;
-    color: #fff;
-}
-
+/* Existing CSS */
 body {
+    background: #eee;
+    color: #333;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0;
 }
 
-body.dark-mode {
-    background-color: #121212;
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #333;
     color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #77c7ff 3px solid;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight, header .current a {
+    color: #77c7ff;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #77c7ff;
+    font-weight: bold;
+}
+
+#showcase {
+    min-height: 400px;
+    background: url('../img/showcase.jpg') no-repeat 0 -400px;
+    text-align: center;
+    color: #fff;
+}
+
+#showcase h1 {
+    margin-top: 100px;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+#showcase p {
+    font-size: 20px;
+}
+
+#newsletter {
+    padding: 15px;
+    color: #fff;
+    background: #333;
+}
+
+#newsletter h1 {
+    float: left;
+}
+
+#newsletter form {
+    float: right;
+    margin-top: 15px;
+}
+
+#newsletter input[type="email"] {
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+}
+
+aside#sidebar {
+    float: right;
+    width: 30%;
+    margin-top: 10px;
+}
+
+article#main-col {
+    float: left;
+    width: 65%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+#boxes .box {
+    float: left;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+/* New CSS for enhancements */
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    overflow: hidden;
 }
 
 h1 {
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
-}
-
-body.dark-mode h1 {
-    color: #fff;
 }
 
 form {
-    display: flex;
-    flex-wrap: wrap; /* Ensure the form elements wrap within the container */
-    justify-content: space-between;
     margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"], input[type="datetime-local"], select {
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
     padding: 10px;
+    margin: 5px 0;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    flex: 1 1 100px; /* Ensure flexible width */
-    min-width: 0; /* Prevent overflow */
-    background-color: #fff;
-    color: #000;
+    border-radius: 5px;
 }
 
-body.dark-mode input[type="text"], body.dark-mode input[type="datetime-local"], body.dark-mode select {
-    background-color: #333;
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    background: #333;
     color: #fff;
-    border: 1px solid #555;
-}
-
-.add-btn {
-    background-color: #28a745;
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1 1 100px; /* Ensure flexible width */
-    min-width: 0; /* Prevent overflow */
 }
 
-.add-btn:hover {
-    background-color: #218838;
+input[type="submit"]:hover {
+    background: #555;
 }
 
 ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 li {
-    background: #f4f4f9;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background: #fff;
+    padding: 20px;
     margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap; /* Ensure flexible wrapping of elements */
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode li {
-    background: #333;
-    border-color: #555;
-}
-
-.low {
-    border-left: 5px solid #28a745;
-}
-
-.medium {
-    border-left: 5px solid #ffc107;
-}
-
-.high {
-    border-left: 5px solid #dc3545;
-}
-
-li.completed span {
+li span.completed {
     text-decoration: line-through;
-    color: #888;
-}
-
-.buttons {
-    display: flex;
-    gap: 5px;
-}
-
-.edit-input, .edit-priority, .edit-date {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    flex: 1 1 100px; /* Ensure flexible width */
-    min-width: 0; /* Prevent overflow */
-    background-color: #fff;
-    color: #000;
-}
-
-body.dark-mode .edit-input, body.dark-mode .edit-priority, body.dark-mode .edit-date {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-}
-
-.edit-btn, .complete-btn, .delete-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1 1 100px; /* Ensure flexible width */
-    min-width: 0; /* Prevent overflow */
-}
-
-.edit-btn {
-    background-color: #17a2b8;
-    color: #fff;
-}
-
-.edit-btn:hover {
-    background-color: #138496;
-}
-
-.complete-btn {
-    background-color: #28a745;
-    color: #fff;
-}
-
-.complete-btn:hover {
-    background-color: #218838;
-}
-
-.delete-btn {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
-.clear-btn {
-    background-color: #ffc107;
-    padding: 10px;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.clear-btn:hover {
-    background-color: #e0a800;
 }
 
 .toggle-mode {
-    background-color: #6c757d;
-    padding: 10px;
-    border: none;
+    float: right;
+    background: #333;
     color: #fff;
-    border-radius: 4px;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Ensure full width */
 }
 
 .toggle-mode:hover {
-    background-color: #5a6268;
+    background: #555;
 }
 
-body.dark-mode .toggle-mode {
-    background-color: #343a40;
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-body.dark-mode .toggle-mode:hover {
-    background-color: #23272b;
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
 }
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="submit"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Additional space between form elements */
+form > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.card-columns .card {
+    transition: transform 0.2s;
+}
+
+.card-columns .card:hover {
+    transform: scale(1.05);
+}
+
+/* Enhancements for login and register forms */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -15px;
+    left: 10px;
+    font-size: 12px;
+    color: #3f51b5;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #3f51b5;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #303f9f;
+}
+
+p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+p a {
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+
+
