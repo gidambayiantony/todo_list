@@ -26,4 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#editModal').modal('show');
         });
     });
+
+    // Drag and Drop for reordering
+    $('#todo-list').sortable({
+        update: function(event, ui) {
+            let order = $(this).sortable('toArray', { attribute: 'data-id' });
+            console.log(order); // Send this array to the server to save the new order
+        }
+    });
 });

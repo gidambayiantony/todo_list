@@ -207,8 +207,10 @@ li span.completed {
 }
 
 .toggle-mode {
-    float: right;
-    background: #333;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #ff5722;
     color: #fff;
     border: 0;
     padding: 10px;
@@ -217,7 +219,7 @@ li span.completed {
 }
 
 .toggle-mode:hover {
-    background: #555;
+    background: #e64a19;
 }
 
 /* General styles */
@@ -393,6 +395,5 @@ p a {
 p a:hover {
     text-decoration: underline;
 }
-
 
 

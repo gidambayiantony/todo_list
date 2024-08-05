@@ -126,7 +126,7 @@ if ($sort == 'due_date_asc') {
         </form>
 
         <!-- Add Todo Button -->
-        <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#addModal">Add Todo</button>
+        <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#addModal"><i class="fas fa-plus"></i> Add Todo</button>
 
         <!-- Add Todo Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -149,7 +149,7 @@ if ($sort == 'due_date_asc') {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="submit" name="add" value="Add" class="btn btn-primary">
+                            <button type="submit" name="add" class="btn btn-primary">Add Todo</button>
                         </div>
                     </form>
                 </div>
@@ -157,68 +157,74 @@ if ($sort == 'due_date_asc') {
         </div>
 
         <!-- Todo List -->
-        <div class="card-deck">
-    <?php foreach ($filtered_todos as $todo): ?>
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo htmlspecialchars($todo['title']); ?></h5>
-                <p class="card-text"><strong>Priority:</strong> <?php echo htmlspecialchars($todo['priority']); ?></p>
-                <p class="card-text"><strong>Due Date:</strong> <?php echo htmlspecialchars($todo['due_date']); ?></p>
-                <p class="card-text"><strong>Description:</strong> <?php echo htmlspecialchars($todo['description']); ?></p>
-                <p class="card-text"><strong>Category:</strong> <?php echo htmlspecialchars($todo['category']); ?></p>
-                <p class="card-text"><strong>Subtasks:</strong> <?php echo htmlspecialchars($todo['subtasks']); ?></p>
-                <form method="POST" action="" class="d-inline">
-                    <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
-                    <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm">
-                </form>
-                <form method="POST" action="" class="d-inline">
-                    <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
-                    <input type="submit" name="complete" value="Complete" class="btn btn-success btn-sm">
-                </form>
-                <button class="btn btn-info btn-sm edit-todo" data-id="<?php echo $todo['id']; ?>" data-title="<?php echo htmlspecialchars($todo['title']); ?>" data-priority="<?php echo htmlspecialchars($todo['priority']); ?>" data-due_date="<?php echo htmlspecialchars($todo['due_date']); ?>" data-description="<?php echo htmlspecialchars($todo['description']); ?>" data-category="<?php echo htmlspecialchars($todo['category']); ?>" data-subtasks="<?php echo htmlspecialchars($todo['subtasks']); ?>">Edit</button>
-            </div>
-        </div>
-    <?php endforeach; ?>
-</div>
-
-        <!-- Edit Todo Modal -->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form method="POST" action="">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Todo</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+        <div class="list-group" id="todo-list">
+            <?php foreach ($filtered_todos as $todo): ?>
+                <div class="list-group-item" data-id="<?php echo $todo['id']; ?>">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1"><?php echo htmlspecialchars($todo['title']); ?></h5>
+                            <p class="mb-1">
+                                <strong>Priority:</strong> <?php echo htmlspecialchars($todo['priority']); ?><br>
+                                <strong>Due Date:</strong> <?php echo htmlspecialchars($todo['due_date']); ?><br>
+                                <strong>Description:</strong> <?php echo htmlspecialchars($todo['description']); ?><br>
+                                <strong>Category:</strong> <?php echo htmlspecialchars($todo['category']); ?><br>
+                                <strong>Subtasks:</strong> <?php echo htmlspecialchars($todo['subtasks']); ?>
+                            </p>
                         </div>
-                        <div class="modal-body">
-                            <input type="hidden" name="id" id="edit-id">
-                            <input type="text" name="new_todo" class="form-control mb-2" id="edit-title" required>
-                            <input type="text" name="priority" class="form-control mb-2" id="edit-priority" required>
-                            <input type="date" name="due_date" class="form-control mb-2" id="edit-due_date" required>
-                            <textarea name="description" class="form-control mb-2" id="edit-description"></textarea>
-                            <input type="text" name="category" class="form-control mb-2" id="edit-category" required>
-                            <textarea name="subtasks" class="form-control mb-2" id="edit-subtasks"></textarea>
+                        <div>
+                            <form method="POST" action="" class="d-inline">
+                                <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
+                                <button type="submit" name="complete" class="btn btn-success"><i class="fas fa-check"></i></button>
+                            </form>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#editModal-<?php echo $todo['id']; ?>"><i class="fas fa-edit"></i></button>
+                            <form method="POST" action="" class="d-inline">
+                                <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
+                                <button type="submit" name="delete" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="submit" name="edit" value="Save" class="btn btn-primary">
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Edit Todo Modal -->
+                <div class="modal fade" id="editModal-<?php echo $todo['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel-<?php echo $todo['id']; ?>" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="POST" action="">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel-<?php echo $todo['id']; ?>">Edit Todo</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="id" value="<?php echo $todo['id']; ?>">
+                                    <input type="text" name="new_todo" class="form-control mb-2" value="<?php echo htmlspecialchars($todo['title']); ?>" required>
+                                    <input type="text" name="priority" class="form-control mb-2" value="<?php echo htmlspecialchars($todo['priority']); ?>" required>
+                                    <input type="date" name="due_date" class="form-control mb-2" value="<?php echo htmlspecialchars($todo['due_date']); ?>" required>
+                                    <textarea name="description" class="form-control mb-2"><?php echo htmlspecialchars($todo['description']); ?></textarea>
+                                    <input type="text" name="category" class="form-control mb-2" value="<?php echo htmlspecialchars($todo['category']); ?>" required>
+                                    <textarea name="subtasks" class="form-control mb-2"><?php echo htmlspecialchars($todo['subtasks']); ?></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" name="edit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        <!-- Clear Completed Button -->
-        <form method="POST" action="" class="text-center mt-4">
-            <input type="submit" name="clear_completed" value="Clear Completed Tasks" class="btn btn-warning">
+        <form method="POST" action="" class="mt-4">
+            <input type="submit" name="clear_completed" value="Clear Completed Tasks" class="btn btn-danger">
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
